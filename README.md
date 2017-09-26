@@ -21,7 +21,7 @@ Extend the config using an [eslint config file](https://eslint.org/docs/user-gui
 ```j
 {
     "extends": [
-        de-tooling"
+        @financial-times/de-tooling"
     ],
     "rules": {
         // Override any settings from the "parent" extended configuration
