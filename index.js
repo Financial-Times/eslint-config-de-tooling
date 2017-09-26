@@ -7,8 +7,8 @@ module.exports = {
     "plugins": [
         "prettier"
     ],
-    "ecmaFeatures": {
-        "impliedStrict": false
+    "parserOptions": {
+        sourceType: "script"
     },
     "rules": {
         'arrow-body-style': 0,
