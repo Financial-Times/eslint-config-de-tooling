@@ -1,12 +1,11 @@
 {
   "name": "@financial-times/eslint-config-de-tooling",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "eslint config for de-tooling projects",
   "main": "index.js",
   "scripts": {
     "test": "eslint -c index.js test && eslint -c test.js test",
-    "precommit": "npm test",
-    "publish": "npm publish --access=public"
+    "precommit": "npm test"
   },
   "repository": "https://github.com/Financial-Times/eslint-config-de-tooling",
   "author": "charlie.briggs@ft.com",
