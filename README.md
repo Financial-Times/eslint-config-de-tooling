@@ -11,22 +11,22 @@ This is also intended to be used with the [prettier](https://www.npmjs.com/packa
 Install this package together with your application:
 
 ```shell
-npm install --save-dev eslint-config-de-tooling
+npm install --save-dev @financial-times/eslint-config-de-tooling
 ```
 
 It's recommended to avoid global installs where possible, as eslint in particular can be volatile with dependency locations.
 
 Extend the config using an [eslint config file](https://eslint.org/docs/user-guide/configuring). For example in an `.eslintrc.js` file:
 
-```js
+```j
 {
     "extends": [
         de-tooling"
-    ]
-
+    ],
     "rules": {
         // Override any settings from the "parent" extended configuration
     }
+}
 ```
 
 ## Dependencies
@@ -41,7 +41,7 @@ It's possible to automatically install these by adapting the steps from [eslint-
 
 ```shell
 (
-  export PKG=eslint-config-de-tooling;
+  export PKG=@financial-times/eslint-config-de-tooling;
   npm info "$PKG@latest" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG@latest"
 )
 ```
