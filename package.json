@@ -4,7 +4,7 @@
   "description": "eslint config for de-tooling projects",
   "main": "index.js",
   "scripts": {
-    "test": "eslint -c index.js test",
+    "test": "eslint -c index.js test && eslint -c test.js test",
     "precommit": "npm test",
     "publish": "npm publish --access=public"
   },
@@ -17,11 +17,13 @@
   },
   "peerDependencies": {
     "eslint": "^4.6.0",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-mocha": "^4.11.0"
   },
   "devDependencies": {
     "eslint": "^4.6.0",
     "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-mocha": "^4.11.0",
     "husky": "^0.14.3"
   }
 }
