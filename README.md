@@ -4,8 +4,6 @@ This is an ESLint configuration which aims to ensure all de-tooling applications
 
 This plugin extends [airbnb](https://www.npmjs.com/package/eslint-config-airbnb-base)'s base config, while keeping consistent with [origami](https://github.com/Financial-Times/eslint-config-origami-component)'s configuration.
 
-This is also intended to be used with the [prettier](https://www.npmjs.com/package/prettier) JS code formatter, and as such ignores all stylistic rules managed by prettier.
-
 ## Usage
 
 Install this package together with your application:
@@ -34,7 +32,6 @@ Extend the config using an [eslint config file](https://eslint.org/docs/user-gui
 This package requires certain dependencies as `peerDependencies`. This is a decision consistent with eslint (see https://github.com/eslint/eslint/issues/2518, https://github.com/eslint/eslint/issues/3458). This means they should be installed wherever this package is consumed, with matching version ranges:
 
 * [eslint](https://www.npmjs.com/package/eslint)
-* [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)
 * [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
 
 It's possible to automatically install these by adapting the steps from [eslint-config-airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base), e.g. for Linux/OSX:

@@ -1,12 +1,9 @@
 module.exports = {
     "extends": [
         "airbnb-base",
-        "origami-component",
-        "prettier"
+        "origami-component"
     ],
-    "plugins": [
-        "prettier"
-    ],
+    "plugins": [],
     "parserOptions": {
         sourceType: "script"
     },
