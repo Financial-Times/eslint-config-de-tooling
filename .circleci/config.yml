@@ -9,7 +9,7 @@ references:
       - NPM_VERSION: 5.4.2
 
   repository_cache_key: &repository_cache_key
-    v1-repository-{{ .Branch }}-{{ .Revision }}-{{ .Environment.NPM_VERSION }}
+    v1-repository-{{ .Branch }}-{{ .Revision }}
 
   restore_repository: &restore_repository
     restore_cache:
@@ -18,12 +18,12 @@ references:
 
   cache_repo: &cache_repo
     save_cache:
-      key: v1-repository-{{ .Branch }}-{{ .Revision }}-{{ .Environment.NPM_VERSION }}
+      key: v1-repository-{{ .Branch }}-{{ .Revision }}
       paths:
         - .
 
   npm_cache_key: &npm_cache_key
-    v1-dependency-npm-{{ checksum "package-lock.json" }}-{{ .Environment.NPM_VERSION }}
+    v1-dependency-npm-{{ checksum "package-lock.json" }}
 
   restore_node_modules: &restore_node_modules
     restore_cache:
@@ -35,6 +35,11 @@ references:
       key: *npm_cache_key
       paths:
         - ./node_modules
+
+  update_npm: &update_npm
+    run:
+      name: Update npm
+      command: sudo npm install -g npm@$NPM_VERSION
 
 jobs:
   checkout_code:
@@ -50,35 +55,39 @@ jobs:
       - *restore_repository
       - *restore_node_modules
 
+      - *update_npm
       - run:
-        name: Update npm
-        command: sudo npm install -g npm@$NPM_VERSION
+          name: Install dependencies
+          command: npm install
 
       - *cache_node_modules
-      - *cache_repo
 
   test:
     <<: *container_config
     steps:
       - *restore_repository
+      - *restore_node_modules
 
       - run:
-        name: Run tests
-        command: npm test
+          name: Run Tests
+          command: npm test
 
   release:
     <<: *container_config
     steps:
       - *restore_repository
+      - *restore_node_modules
+
+      - *update_npm
 
       - run:
-        name: Prune devDependencies
-        command: npm prune --production
+          name: Prune devDependencies
+          command: npm prune --production
 
       - deploy:
           command: |
-            echo "_auth = $NPM_AUTH" >> .npmrc
-            echo "email = $NPM_EMAIL" >> .npmrc
+            npm install -g npm-cli-login
+            NPM_USER=$NPM_USER NPM_PASS=$NPM_PASSWORD NPM_EMAIL=$NPM_EMAIL npm-cli-login
             npm publish --access public
 
 workflows:
@@ -92,9 +101,17 @@ workflows:
       - test:
           requires:
             - install_dependencies
-      - deploy:
+      - release:
           requires:
             - test
+          branches:
+            ignore: /.*/
           filters:
             tags:
               only: /v.*/
+
+experimental:
+  notify:
+    branches:
+      only:
+        - master
