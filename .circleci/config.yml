@@ -42,7 +42,7 @@ references:
       command: sudo npm install -g npm@$NPM_VERSION
 
 jobs:
-  checkout_code:
+  checkout:
     <<: *container_config
     steps:
       - *restore_repository
@@ -94,19 +94,19 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - checkout_code
+      - checkout
       - install_dependencies:
           requires:
-            - checkout_code
+            - checkout
       - test:
           requires:
             - install_dependencies
       - release:
           requires:
             - test
-          branches:
-            ignore: /.*/
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /v.*/
 
