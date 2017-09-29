@@ -3,24 +3,18 @@ version: 2
 references:
 
   container_config: &container_config
+    working_directory: ~/project/de-tooling-eslint
     docker:
       - image: circleci/node:4.8.3
     environment:
       - NPM_VERSION: 5.4.2
 
-  repository_cache_key: &repository_cache_key
-    v1-repository-{{ .Branch }}-{{ .Revision }}
+  workspace_root: &workspace_root
+    ~/project
 
-  restore_repository: &restore_repository
-    restore_cache:
-      keys:
-        - *repository_cache_key
-
-  cache_repo: &cache_repo
-    save_cache:
-      key: v1-repository-{{ .Branch }}-{{ .Revision }}
-      paths:
-        - .
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace_root
 
   npm_cache_key: &npm_cache_key
     v1-dependency-npm-{{ checksum "package-lock.json" }}
@@ -42,17 +36,10 @@ references:
       command: sudo npm install -g npm@$NPM_VERSION
 
 jobs:
-  checkout:
+  install:
     <<: *container_config
     steps:
-      - *restore_repository
       - checkout
-      - *cache_repo
-
-  install_dependencies:
-    <<: *container_config
-    steps:
-      - *restore_repository
       - *restore_node_modules
 
       - *update_npm
@@ -61,12 +48,15 @@ jobs:
           command: npm install
 
       - *cache_node_modules
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - de-tooling-eslint
 
   test:
     <<: *container_config
     steps:
-      - *restore_repository
-      - *restore_node_modules
+      - *attach_workspace
 
       - run:
           name: Run Tests
@@ -75,8 +65,7 @@ jobs:
   release:
     <<: *container_config
     steps:
-      - *restore_repository
-      - *restore_node_modules
+      - *attach_workspace
 
       - *update_npm
 
@@ -94,13 +83,10 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - checkout
-      - install_dependencies:
-          requires:
-            - checkout
+      - install
       - test:
           requires:
-            - install_dependencies
+            - install
       - release:
           requires:
             - test
