@@ -19,7 +19,7 @@ Extend the config using an [eslint config file](https://eslint.org/docs/user-gui
 ```js
 {
     "extends": [
-        @financial-times/de-tooling"
+        "@financial-times/de-tooling"
     ],
     "rules": {
         // Override any settings from the "parent" extended configuration
@@ -33,8 +33,8 @@ Additionally, a test config is provided which can be used to extend the base con
 ```js
 {
     "extends": [
-        @financial-times/de-tooling",
-        @financial-times/de-tooling/test"
+        "@financial-times/de-tooling",
+        "@financial-times/de-tooling/test"
     ],
     "rules": {
         // Override any settings from the "parent" extended configuration
