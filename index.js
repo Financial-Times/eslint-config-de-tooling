@@ -31,6 +31,6 @@ module.exports = {
         'prefer-arrow-callback': ['error', {allowNamedFunctions: true}],
         'quote-props': ['error', 'as-needed', {numbers: true}],
         'space-before-function-paren': ['error', 'never'],
-        'valid-jsdoc': 'off',
+        'valid-jsdoc': 'warn',
     }
 }
