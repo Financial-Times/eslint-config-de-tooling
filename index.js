@@ -21,7 +21,7 @@ module.exports = {
         'func-names': 'off',
         'import/no-extraneous-dependencies': ['error', {
             'devDependencies': [
-                'public', // public static asset paths
+                'public/**', // public static asset paths
                 'test/**', // tape, common npm pattern
                 'tests/**', // also common npm pattern
                 'spec/**', // mocha, rspec-like pattern
