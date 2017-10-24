@@ -9,7 +9,8 @@ module.exports = {
     },
     globals: {
         'sinon': true,
-        'expect': true
+        'expect': true,
+        'assert': true
     },
     rules: {
         'max-len': 0,
