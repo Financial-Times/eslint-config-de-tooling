@@ -5,9 +5,7 @@ references:
   container_config: &container_config
     working_directory: ~/project/de-tooling-eslint
     docker:
-      - image: circleci/node:4.8.3
-    environment:
-      - NPM_VERSION: 5.4.2
+      - image: circleci/node:8.10
 
   workspace_root: &workspace_root
     ~/project
@@ -30,11 +28,6 @@ references:
       paths:
         - ./node_modules
 
-  update_npm: &update_npm
-    run:
-      name: Update npm
-      command: sudo npm install -g npm@$NPM_VERSION
-
 jobs:
   install:
     <<: *container_config
@@ -42,7 +35,6 @@ jobs:
       - checkout
       - *restore_node_modules
 
-      - *update_npm
       - run:
           name: Install dependencies
           command: npm install
@@ -66,8 +58,6 @@ jobs:
     <<: *container_config
     steps:
       - *attach_workspace
-
-      - *update_npm
 
       - run:
           name: Prune devDependencies

@@ -7,6 +7,9 @@
     "test": "eslint -c index.js test && eslint -c test.js test",
     "precommit": "npm test"
   },
+  "engines": {
+    "node": ">= 8"
+  },
   "repository": "https://github.com/Financial-Times/eslint-config-de-tooling",
   "author": "charlie.briggs@ft.com",
   "license": "MIT",
