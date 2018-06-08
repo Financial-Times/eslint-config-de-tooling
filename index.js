@@ -4,12 +4,9 @@ module.exports = {
     ],
     'plugins': [],
     'parserOptions': {
-        ecmaVersion: 2017,
+        ecmaVersion: 2018,
         sourceType: 'script',
-        impliedStrict: false,
-        ecmaFeatures: {
-            experimentalObjectRestSpread: false,
-        },
+        impliedStrict: false
     },
     'settings': {
         'import/core-modules': [
