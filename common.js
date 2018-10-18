@@ -26,5 +26,6 @@ module.exports = {
             },
         ],
         'valid-jsdoc': 'warn',
+        'unicorn/filename-case': 'off',
     },
 };

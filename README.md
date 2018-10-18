@@ -2,7 +2,7 @@
 
 This is an ESLint configuration which aims to ensure all de-tooling applications' source code is consistent in style.
 
-This plugin extends [airbnb](https://www.npmjs.com/package/eslint-config-airbnb-base)'s base config.
+This plugin extends [airbnb](https://www.npmjs.com/package/eslint-config-airbnb-base)'s base config along with extra rules provided by [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn).
 
 ## Usage
 
@@ -27,7 +27,7 @@ Extend the config using an [eslint config file](https://eslint.org/docs/user-gui
 }
 ```
 
-#### Mocha config
+### Mocha config
 
 A mocha config is provided which can be used to extend the base config:
 
@@ -45,7 +45,7 @@ A mocha config is provided which can be used to extend the base config:
 
 This config adds `mocha` and `sinon` globals and additional rules for `mocha` based tests.
 
-#### React/JSX config
+### React/JSX config
 
 A jsx config is provided which replaces the base config, based on the full [airbnb](https://www.npmjs.com/package/eslint-config-airbnb) config:
 
