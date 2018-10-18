@@ -27,8 +27,9 @@ Extend the config using an [eslint config file](https://eslint.org/docs/user-gui
 }
 ```
 
-Additionally, a test config is provided which can be used to extend the base config:
+#### Mocha config
 
+A mocha config is provided which can be used to extend the base config:
 
 ```js
 {
@@ -41,16 +42,33 @@ Additionally, a test config is provided which can be used to extend the base con
     }
 }
 ```
+
 This config adds `mocha` and `sinon` globals and additional rules for `mocha` based tests.
+
+#### React/JSX config
+
+A jsx config is provided which replaces the base config, based on the full [airbnb](https://www.npmjs.com/package/eslint-config-airbnb) config:
+
+```js
+{
+    "extends": [
+        "@financial-times/de-tooling/react"
+    ],
+    "rules": {
+        // Override any settings from the "parent" extended configuration
+    }
+}
+```
 
 ## Dependencies
 
 This package requires certain dependencies as `peerDependencies`. This is a decision consistent with eslint (see https://github.com/eslint/eslint/issues/2518, https://github.com/eslint/eslint/issues/3458). This means they should be installed wherever this package is consumed, with matching version ranges:
 
-* [eslint](https://www.npmjs.com/package/eslint)
-* [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
-* [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) (only required when using test config)
-
+-   [eslint](https://www.npmjs.com/package/eslint)
+-   [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
+-   [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) (only required when using test config)
+-   [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-mocha) (only required when using react config, can otherwise be ignored)
+-   [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-mocha) (only required when using react config, can otherwise be ignored)
 
 It's possible to automatically install these by adapting the steps from [eslint-config-airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base), e.g. for Linux/OSX:
 

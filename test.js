@@ -1,32 +1,31 @@
 'use strict';
 
 module.exports = {
-    plugins: [
-        'mocha'
-    ],
+    plugins: ['mocha'],
     env: {
-        'mocha': true
+        mocha: true,
     },
     globals: {
-        'sinon': true,
-        'expect': true,
-        'assert': true
+        sinon: true,
+        expect: true,
+        assert: true,
     },
     rules: {
-        'max-len': 0,
-        'prefer-arrow-callback': 0, // disabled as mocha relies on 'this' as context for some test helpers
-        'no-unused-expressions': 0,
-        'mocha/no-skipped-tests': 0,
-        'mocha/no-exclusive-tests': 2,
-        'mocha/no-pending-tests': 2,
-        'mocha/handle-done-callback': 2,
-        'mocha/no-global-tests': 2,
-        'mocha/valid-test-description': 0,
-        'mocha/valid-suite-description': 0,
-        'mocha/no-synchronous-tests': 0,
-        'mocha/no-sibling-hooks': 2,
-        'mocha/no-mocha-arrows': 0,
-        'mocha/no-hooks': 0,
-        'mocha/no-top-level-hooks': 2
-    }
+        'max-len': 'off',
+        'prefer-arrow-callback': 'off',
+        'mocha/prefer-arrow-callback': 'error',
+        'no-unused-expressions': 'off',
+        'mocha/no-skipped-tests': 'off',
+        'mocha/no-exclusive-tests': 'error',
+        'mocha/no-pending-tests': 'error',
+        'mocha/handle-done-callback': 'error',
+        'mocha/no-global-tests': 'error',
+        'mocha/valid-test-description': 'off',
+        'mocha/valid-suite-description': 'off',
+        'mocha/no-synchronous-tests': 'off',
+        'mocha/no-sibling-hooks': 'error',
+        'mocha/no-mocha-arrows': 'off',
+        'mocha/no-hooks': 'off',
+        'mocha/no-top-level-hooks': 'error',
+    },
 };
