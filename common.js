@@ -26,6 +26,7 @@ module.exports = {
             },
         ],
         'valid-jsdoc': 'warn',
+        // we don't seem to have a convention
         'unicorn/filename-case': 'off',
     },
 };
