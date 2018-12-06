@@ -1,6 +1,6 @@
 {
     "name": "@financial-times/eslint-config-de-tooling",
-    "version": "3.0.2",
+    "version": "3.1.0",
     "description": "eslint config for de-tooling projects",
     "main": "index.js",
     "scripts": {
