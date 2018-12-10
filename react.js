@@ -16,5 +16,17 @@ module.exports = {
                 depth: 25,
             },
         ],
+        // override to allow origami style controls, which do not nest controls in labels
+        // https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md
+        'jsx-a11y/label-has-for': [
+            'error',
+            {
+                components: [],
+                required: {
+                    some: ['nesting', 'id'],
+                },
+                allowChildren: false,
+            },
+        ],
     },
 };
