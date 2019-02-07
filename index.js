@@ -1,3 +1,3 @@
-module.exports = {
-    extends: ['airbnb-base', './common.js'],
-};
+'use strict';
+
+module.exports = require('./rules/auto');

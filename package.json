@@ -1,40 +1,56 @@
 {
-    "name": "@financial-times/eslint-config-de-tooling",
-    "version": "3.1.1",
-    "description": "eslint config for de-tooling projects",
+    "name": "@financial-times/eslint-config-reliability-engineering",
+    "version": "4.0.0",
+    "description": "Shared eslint config for reliability-engineering projects",
     "main": "index.js",
     "scripts": {
-        "test": "eslint -c index.js test && eslint -c test.js test && eslint -c test.js react.js"
+        "test": "find . -name '*.js' -not -name ‘index.js’ -maxdepth 1 -exec eslint -c {} test \\; && eslint -c .eslintrc.js test",
+        "lint": "eslint --cache --fix  ."
     },
     "engines": {
         "node": ">= 8"
     },
-    "repository": "https://github.com/Financial-Times/eslint-config-de-tooling",
+    "repository": "https://github.com/Financial-Times/eslint-config-reliability-engineering",
     "author": "charlie.briggs@ft.com",
     "license": "MIT",
     "dependencies": {
-        "eslint-config-airbnb": "^17.1.0",
-        "eslint-config-airbnb-base": "^13.1.0",
-        "eslint-plugin-unicorn": "^6.0.1"
+        "read-pkg-up": "^4.0.0"
     },
     "peerDependencies": {
-        "eslint": "^5.7.0",
-        "eslint-plugin-import": "^2.14.0",
-        "eslint-plugin-mocha": "^5.2.0",
-        "eslint-plugin-jsx-a11y": "^6.1.2",
-        "eslint-plugin-react": "^7.11.1"
+        "eslint": "^5.13.0",
+        "eslint-config-airbnb": "^17.1.0",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-config-prettier": "^4.0.0",
+        "eslint-plugin-cypress": "^2.2.0",
+        "eslint-plugin-import": "^2.16.0",
+        "eslint-plugin-jest": "^22.2.2",
+        "eslint-plugin-jsx-a11y": "^6.2.1",
+        "eslint-plugin-mocha": "^5.2.1",
+        "eslint-plugin-prettier": "^3.0.1",
+        "eslint-plugin-react": "^7.12.4",
+        "eslint-plugin-react-hooks": "^1.0.1",
+        "eslint-plugin-unicorn": "^7.1.0"
     },
     "devDependencies": {
-        "eslint": "^5.9.0",
-        "eslint-plugin-import": "^2.14.0",
-        "eslint-plugin-jsx-a11y": "^6.1.2",
-        "eslint-plugin-mocha": "^5.2.0",
-        "eslint-plugin-react": "^7.11.1",
-        "husky": "^1.2.0"
+        "eslint": "^5.13.0",
+        "eslint-config-airbnb": "^17.1.0",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-config-prettier": "^4.0.0",
+        "eslint-plugin-cypress": "^2.2.0",
+        "eslint-plugin-import": "^2.16.0",
+        "eslint-plugin-jest": "^22.2.2",
+        "eslint-plugin-jsx-a11y": "^6.2.1",
+        "eslint-plugin-mocha": "^5.2.1",
+        "eslint-plugin-prettier": "^3.0.1",
+        "eslint-plugin-react": "^7.12.4",
+        "eslint-plugin-react-hooks": "^1.0.1",
+        "eslint-plugin-unicorn": "^7.1.0",
+        "husky": "^1.3.1",
+        "prettier": "^1.16.4"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm test"
+            "pre-commit": "npm run lint && npm test"
         }
     }
 }

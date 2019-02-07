@@ -1,9 +1,9 @@
-version: 2
+version: 2.1
 
 references:
 
   container_config: &container_config
-    working_directory: ~/project/de-tooling-eslint
+    working_directory: ~/project/eslint-config
     docker:
       - image: circleci/node:8.10
 
@@ -43,7 +43,7 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-            - de-tooling-eslint
+            - eslint-config
 
   test:
     <<: *container_config
@@ -70,7 +70,7 @@ jobs:
             npm publish --access public
 
 workflows:
-  version: 2
+  version: 2.1
   build-and-deploy:
     jobs:
       - install:
