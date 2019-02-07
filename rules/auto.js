@@ -2,6 +2,7 @@
 
 'use strict';
 
+const path = require('path');
 const {
     usingJsx,
     usingNonReactJsx,
@@ -11,7 +12,7 @@ const {
 } = require('../lib/feature-detect');
 
 const getConfig = ({ prettier = true, esModules = false }) => {
-    const config = {};
+    const config = { rules: {} };
 
     if (esModules) {
         config.parserOptions = {
@@ -32,7 +33,7 @@ const getConfig = ({ prettier = true, esModules = false }) => {
 
     const getJestConfig = () => {
         // Can't extend in overrides: https://github.com/eslint/eslint/issues/8813
-        const jestConfig = require('./jest').configs.recommended;
+        const jestConfig = require('./jest');
         return Object.assign({}, jestConfig, {
             files: [
                 '**/__tests__/**/*.js',
@@ -45,7 +46,7 @@ const getConfig = ({ prettier = true, esModules = false }) => {
 
     const getMochaConfig = () => {
         // Can't extend in overrides: https://github.com/eslint/eslint/issues/8813
-        const mochaConfig = require('../test');
+        const mochaConfig = require('../mocha');
         return Object.assign({}, mochaConfig, {
             files: ['**/*.test.js', '**/*.spec.js'],
         });
@@ -59,7 +60,9 @@ const getConfig = ({ prettier = true, esModules = false }) => {
         });
     };
 
-    config.extends = usingJsx ? ['./react.js'] : ['./base.js'];
+    config.extends = usingJsx
+        ? [path.join(__dirname, './react.js')]
+        : [path.join(__dirname, './base.js')];
 
     if (usingMocha) {
         config.overrides = [...(config.overrides || []), getMochaConfig()];
@@ -75,7 +78,10 @@ const getConfig = ({ prettier = true, esModules = false }) => {
 
     // add prettier last to ensure it overrides prior config
     if (prettier) {
-        config.extends = [...config.extends, './rules/prettier.js'];
+        config.extends = [
+            ...config.extends,
+            path.join(__dirname, './prettier.js'),
+        ];
     }
 
     return config;

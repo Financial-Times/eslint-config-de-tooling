@@ -1,6 +1,10 @@
+'use strict';
+
+const path = require('path');
+
 module.exports = {
     plugins: ['react-hooks'],
-    extends: ['airbnb', './rules/common.js'],
+    extends: ['airbnb', path.join(__dirname, './common.js')],
     rules: {
         // this can be extremely annoying when only using one prop, and is stylistic
         // https://github.com/yannickcr/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/destructuring-assignment.md

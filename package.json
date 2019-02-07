@@ -4,7 +4,7 @@
     "description": "Shared eslint config for reliability-engineering projects",
     "main": "index.js",
     "scripts": {
-        "test": "find . -name '*.js' -not -name ‘index.js’ -maxdepth 1 -exec eslint -c {} test \\; && eslint -c .eslintrc.js test",
+        "test": "find test -type d -mindepth 1 -maxdepth 1 -exec eslint --ignore-path test/.eslintignore --fix --ext js,jsx -c {}/.eslintrc.js {} \\;",
         "lint": "eslint --cache --fix  ."
     },
     "engines": {
@@ -46,7 +46,8 @@
         "eslint-plugin-react-hooks": "^1.0.1",
         "eslint-plugin-unicorn": "^7.1.0",
         "husky": "^1.3.1",
-        "prettier": "^1.16.4"
+        "prettier": "^1.16.4",
+        "react": "^16.8.1"
     },
     "husky": {
         "hooks": {
