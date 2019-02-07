@@ -3,5 +3,5 @@
 const path = require('path');
 
 module.exports = {
-    extends: ['airbnb-base', path.join(__dirname, './common.js')],
+	extends: ['airbnb-base', path.join(__dirname, './common.js')],
 };
