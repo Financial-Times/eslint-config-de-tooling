@@ -25,4 +25,8 @@ jestConfig.rules['jest/no-disabled-tests'] = [
 	{ extensions: ['.js', '.jsx'] },
 ];
 
+// Disable as it's frequently necessary to do inline requires
+// when working with jest mocks
+jestConfig.rules['global-require'] = 'off';
+
 module.exports = jestConfig;
