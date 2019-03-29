@@ -113,6 +113,15 @@ module.exports = {
 
 		'unicorn/explicit-length-check': 'off',
 
+		// TODO: consider these rules and make a new major release if including any
+		// new rules as of eslint-plugin-unicorn 8.0.0
+		'unicorn/prevent-abbreviations': 'off',
+		'unicorn/no-for-loop': 'off',
+		'unicorn/no-zero-fractions': 'off',
+		'unicorn/prefer-includes': 'off',
+		'unicorn/prefer-text-content': 'off',
+		'unicorn/prefer-node-remove': 'off',
+
 		'valid-jsdoc': 'warn',
 	},
 };
