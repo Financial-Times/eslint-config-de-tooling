@@ -1,6 +1,6 @@
 {
     "name": "@financial-times/eslint-config-reliability-engineering",
-    "version": "5.2.1",
+    "version": "5.2.2",
     "description": "Shared eslint config for reliability-engineering projects",
     "main": "index.js",
     "scripts": {
