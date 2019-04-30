@@ -53,7 +53,8 @@ module.exports = {
 					'**/webpack.config.*.js', // webpack config
 					'**/rollup.config.js', // rollup config
 					'**/rollup.config.*.js', // rollup config
-					'scripts/**', // common pattern for
+					'scripts/**', // common pattern for deployment scripts
+					'fixtures/**', // common pattern for fixture files
 				],
 				optionalDependencies: false,
 			},
