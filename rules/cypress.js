@@ -1,11 +1,11 @@
 'use strict';
 
-const cypressConfig = require('eslint-plugin-cypress').configs.recommended;
-const mochaConfig = require('./mocha');
+const path = require('path');
 
-const mergedConfig = Object.assign({}, mochaConfig, {
+const mergedConfig = {
+	extends: ['plugin:cypress/recommended', path.join(__dirname, './mocha.js')],
 	// Can't extend in overrides: https://github.com/eslint/eslint/issues/8813
-	rules: Object.assign({}, mochaConfig.rules, cypressConfig.rules, {
+	rules: {
 		// allow top-level hooks in cypress setup files
 		'mocha/no-top-level-hooks': 'off',
 		// allow dev-deps in cypress test directories
@@ -16,8 +16,7 @@ const mergedConfig = Object.assign({}, mochaConfig, {
 				optionalDependencies: false,
 			},
 		],
-	}),
-	plugins: [...(mochaConfig.plugins || []), ...(cypressConfig.plugins || [])],
-});
+	},
+};
 
 module.exports = mergedConfig;

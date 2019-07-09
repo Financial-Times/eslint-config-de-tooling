@@ -31,34 +31,25 @@ const getConfig = ({ prettier = true, esModules = false }) => {
 		config.settings = { react: { pragma: 'h' } };
 	}
 
-	const getJestConfig = () => {
-		// Can't extend in overrides: https://github.com/eslint/eslint/issues/8813
-		const jestConfig = require('./jest');
-		return Object.assign({}, jestConfig, {
-			files: [
-				'**/__tests__/**/*.js',
-				'**/__mocks__/**/*.js',
-				'test/**/*.js',
-				'test/**/*.jsx',
-			],
-		});
-	};
+	const getJestConfig = () => ({
+		files: [
+			'**/__tests__/**/*.js',
+			'**/__mocks__/**/*.js',
+			'test/**/*.js',
+			'test/**/*.jsx',
+		],
+		extends: path.join(__dirname, './jest.js'),
+	});
 
-	const getMochaConfig = () => {
-		// Can't extend in overrides: https://github.com/eslint/eslint/issues/8813
-		const mochaConfig = require('../mocha');
-		return Object.assign({}, mochaConfig, {
-			files: ['**/*.test.js', '**/*.spec.js'],
-		});
-	};
+	const getMochaConfig = () => ({
+		files: ['**/*.test.js', '**/*.spec.js'],
+		extends: path.join(__dirname, './mocha.js'),
+	});
 
-	const getCypressConfig = () => {
-		// Can't extend in overrides: https://github.com/eslint/eslint/issues/8813
-		const cypressConfig = require('./cypress');
-		return Object.assign({}, cypressConfig, {
-			files: ['cypress/**/*.js'],
-		});
-	};
+	const getCypressConfig = () => ({
+		files: ['cypress/**/*.js'],
+		extends: path.join(__dirname, './cypress.js'),
+	});
 
 	config.extends = usingJsx
 		? [path.join(__dirname, './react.js')]
