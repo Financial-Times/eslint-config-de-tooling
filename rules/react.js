@@ -9,6 +9,10 @@ module.exports = {
 		// this can be extremely annoying when only using one prop, and is stylistic
 		// https://github.com/yannickcr/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/destructuring-assignment.md
 		'react/destructuring-assignment': 'off',
+		// The rationale for this rule https://codeburst.io/react-anti-pattern-jsx-spread-attributes-59d1dd53677f
+		// could just as easily be applied to any function, which leads to the conclusion that destructuring
+		// object parameters is an antipattern. Hard disagree!
+		'react/jsx-props-no-spreading': 'off',
 		// enable react-hooks rules
 		// https://reactjs.org/docs/hooks-rules.html
 		'react-hooks/rules-of-hooks': 'error',
