@@ -122,6 +122,10 @@ module.exports = {
 		'unicorn/prefer-includes': 'off',
 		'unicorn/prefer-text-content': 'off',
 		'unicorn/prefer-node-remove': 'off',
+		// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-string-slice.md
+		// The justification for this rule includes 'It's better to use String#slice() as it's a more popular option'
+		// Not popular here, mate. Not. Popular. Here!
+		'unicorn/prefer-string-slice': 'off',
 
 		'valid-jsdoc': 'warn',
 	},
