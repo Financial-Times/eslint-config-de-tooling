@@ -65,10 +65,11 @@ jobs:
       - run:
           name: Prune devDependencies
           command: npm prune --production
-
+      - run:
+          name: Setup npm credetials
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
       - deploy:
           command: |
-            NPM_USER=$NPM_USER NPM_PASS=$NPM_PASSWORD NPM_EMAIL=$NPM_EMAIL npx npm-cli-login
             npm version --no-git-tag-version $CIRCLE_TAG
             npm publish --access public
 
