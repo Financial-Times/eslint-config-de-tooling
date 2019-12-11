@@ -35,6 +35,8 @@ const getConfig = ({ prettier = true, esModules = false }) => {
 		files: [
 			'**/__tests__/**/*.js',
 			'**/__mocks__/**/*.js',
+			'**/__tests__/**/*.jsx',
+			'**/__mocks__/**/*.jsx',
 			'test/**/*.js',
 			'test/**/*.jsx',
 		],
