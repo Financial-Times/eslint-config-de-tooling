@@ -49,7 +49,7 @@ const getConfig = ({ prettier = true, esModules = false }) => {
 	});
 
 	const getCypressConfig = () => ({
-		files: ['cypress/**/*.js', "**/__tests__/*.cyp.js"],
+		files: ['cypress/**/*.js', '**/__tests__/*.cyp.js'],
 		extends: path.join(__dirname, './cypress.js'),
 	});
 
