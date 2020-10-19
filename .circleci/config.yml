@@ -6,7 +6,7 @@ orbs:
 docker-auth: &docker-auth
   auth:
     username: $DOCKERHUB_USERNAME
-    password: $DOCKERHUB_ACCESS_TOKEN
+    password: DOCKERHUB_ACCESS_TOKEN
 
 references:
 
