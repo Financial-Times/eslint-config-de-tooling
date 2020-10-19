@@ -3,12 +3,18 @@ version: 2.1
 orbs:
   ft-snyk-orb: financial-times/ft-snyk-orb@0
 
+docker-auth: &docker-auth
+  auth:
+    username: $DOCKERHUB_USERNAME
+    password: $DOCKERHUB_ACCESS_TOKEN
+
 references:
 
   container_config: &container_config
     working_directory: ~/project/eslint-config
     docker:
       - image: circleci/node:8.10
+        <<: *docker-auth
 
   workspace_root: &workspace_root
     ~/project
@@ -78,10 +84,12 @@ workflows:
   build-and-deploy:
     jobs:
       - install:
+          context: dockerhub-shared
           filters:
             tags:
               only: /.*/
       - test:
+          context: dockerhub-shared
           requires:
             - install
           filters:
@@ -89,14 +97,18 @@ workflows:
               only: /.*/
 #Scan package.json for vulnerable dependencies while developing
       - ft-snyk-orb/scan-js-packages:
-          context: rel-eng-creds
+          context: 
+            - rel-eng-creds
+            - dockerhub-shared
           requires:
           - install
           filters:
             tags:
               only: /.*/
       - release:
-          context: rel-eng-creds
+          context: 
+            - rel-eng-creds
+            - dockerhub-shared
           requires:
             - test
           filters:
@@ -107,7 +119,9 @@ workflows:
 #Scan and monitor vulnerabilities once in production
       - ft-snyk-orb/scan-and-monitor-js-packages:
           name: snyk-scan-and-monitor
-          context: rel-eng-creds
+          context: 
+            - rel-eng-creds
+            - dockerhub-shared
           requires:
             - release
           filters:
