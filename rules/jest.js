@@ -5,7 +5,7 @@ const { usingJsx } = require('../lib/feature-detect');
 const config = {
 	extends: ['plugin:jest/recommended'],
 	rules: {
-		// This disallows .skip, which is a useful tool for writing skelton tests
+		// This disallows .skip, which is a useful tool for writing skeleton tests
 		// prior to full implementation. no-focused-tests is still enabled, which
 		// catches .only - that's the killer
 		'jest/no-disabled-tests': [0, { extensions: ['.js', '.jsx'] }],
