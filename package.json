@@ -9,7 +9,7 @@
 		"lint:ci": "eslint ."
 	},
 	"engines": {
-		"node": ">= 8"
+		"node": ">= 14"
 	},
 	"repository": "https://github.com/Financial-Times/eslint-config-reliability-engineering",
 	"author": "charlie.briggs@ft.com",
