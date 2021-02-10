@@ -1,3 +1,5 @@
+NB: This repo is archived in favour of keeping this code together in the rel-engage [repo](https://github.com/Financial-Times/rel-engage/tree/master/packages/eslint). 
+
 # eslint-config-reliability-engineering
 
 This is an ESLint configuration which aims to ensure all reliability-engineering applications' source code is consistent in style.
